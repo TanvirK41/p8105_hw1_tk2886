@@ -6,17 +6,18 @@ output: github_document
 
 ```{r}
 library(tidyverse)
+```
 
+
+
+```{r}
 set.seed(12345)
 mydataframe = tibble(
   random_sample = rnorm(10),
   logical_vec = random_sample > 0,
   char_vec = c("My", "name", "is", "Tanvir", "Khan", "and", "I", "like", "the", "Lakers"),
-  
+  fac_vec = factor(c("single", "single", "single", "single", "married", "married", "married", "divorced", "divorced", "divorced"))
 )
-
-print(mydataframe)
-
 
 
 
