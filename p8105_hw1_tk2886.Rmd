@@ -9,7 +9,7 @@ library(tidyverse)
 ```
 
 
-
+##Question 1 
 ```{r}
 set.seed(12345)
 mydataframe = tibble(
@@ -19,7 +19,17 @@ mydataframe = tibble(
   fac_vec = factor(c("single", "single", "single", "single", "married", "married", "married", "divorced", "divorced", "divorced"))
 )
 
-
+ransample_mean = mean(pull(mydataframe, random_sample))
+logicalvec_mean = mean(pull(mydataframe, logical_vec))
+charvec_mean = mean(pull(mydataframe, char_vec))
+facvec_mean = mean(pull(mydataframe, fac_vec))
 
 ```
+
+##Question 2
+```{r}
+data("penguins", package = "palmerpenguins")
+
+```
+
 
