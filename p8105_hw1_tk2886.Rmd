@@ -32,7 +32,7 @@ facvec_mean = mean(pull(mydataframe, fac_vec))
 ```{r}
 data("penguins", package = "palmerpenguins")
 
-#skimr::skim(penguins)
+skimr::skim(penguins)
 #nrow(penguins)
 #ncol(penguins)
 names(penguins)
@@ -42,8 +42,8 @@ names(penguins)
 ## The mean of the flipper length is 201.
 
 
-ggplot(penguins, aes(x= bill_length_mm, y= flipper_length_mm)) +
-  geom_point(size=2, shape=23)
+ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species)) +
+  geom_point(size = 2, shape = 23)
 ```
 
 
