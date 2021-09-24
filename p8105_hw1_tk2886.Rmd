@@ -1,5 +1,7 @@
 ---
 title: "p8105_hw1_tk2886"
+author: "Tanvir Khan"
+date: 2021-09-24
 output: github_document
 ---
 
@@ -30,6 +32,18 @@ facvec_mean = mean(pull(mydataframe, fac_vec))
 ```{r}
 data("penguins", package = "palmerpenguins")
 
+#skimr::skim(penguins)
+#nrow(penguins)
+#ncol(penguins)
+names(penguins)
+
+## The important variables are bill_length_mm, bill_depth_mm, flipper_length_mm, and body_mass_g. Also, sex, year, species, and island are important variables. 
+## There is 344 rows and 8 columns 
+## The mean of the flipper length is 201.
+
+
+ggplot(penguins, aes(x= bill_length_mm, y= flipper_length_mm)) +
+  geom_point(size=2, shape=23)
 ```
 
 
