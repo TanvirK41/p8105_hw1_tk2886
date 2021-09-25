@@ -38,14 +38,12 @@ When I take the mean of the logical vector, the mean works even though that does
 
 ```{r Mean of Character vector}
 charvec_mean = mean(pull(mydataframe, char_vec))
-charvec_mean
 ```
 When I take the mean of the character vector, the console output is displaying a warning message that states the argument is not numeric or logical: "Returning NA". This makes sense since I can not take the mean of a character vector. 
 
 
 ```{r Mean of Factor vector}
 facvec_mean = mean(pull(mydataframe, fac_vec))
-facvec_mean
 ```
 When I take the mean of the factor vector, I get a warning messae indicating that the argument is not numeric or logical: "Returning NA". The factor vector is not numeric. 
 
