@@ -72,12 +72,14 @@ b) There is `r nrow(penguins)` rows. There is `r ncol(penguins)` columns.
 c) The mean of the flipper length is `r round(mean(penguins$flipper_length_mm, na.rm=TRUE))`.
 
 ```{r Creating scatterplot}
-ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species)) +
+penguin_scatterplot <- ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species)) +
   geom_point(size = 2, shape = 23)
+
+penguin_scatterplot
 ```
 
 ```{r Saving ggplot as PDF}
-ggsave("scatter_plot.pdf", plot = last_plot(), height = 4, width = 6)
+ggsave("scatter_plot.pdf", plot = penguin_scatterplot, height = 4, width = 6)
 ```
 
 
