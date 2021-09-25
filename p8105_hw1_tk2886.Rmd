@@ -10,7 +10,7 @@ output: github_document
 library(tidyverse)
 ```
 
-## QUESTION 1 
+## QUESTION 1
 ```{r Creating a dataframe}
 set.seed(12345)
 
@@ -58,15 +58,15 @@ mean_numchar = mean(numeric_char)
 mean_numlogic = mean(numeric_logv)
 mean_numfactor = mean(numeric_fac)
 ```
-When I take the mean of the converted character vector, it gives me NA because I was not success in converting character vector to numeric variables. When I take the mean of the numeric converted logical vector, I get the mean of 0.4 because R is handing True's as 0 and False as 1. When I take the mean of the numeric converted factor vector, I get the mean of 2.1 which is the mean of the different levels of the factor vector. 
+When I take the mean of the converted character vector, it gives me NA because I did not successfully convert character vector to numeric variables. When I take the mean of the numeric converted logical vector, I get the mean of 0.4 because R is handling True's as 0 and False as 1. When I take the mean of the numeric converted factor vector, I get the mean of 2.1 which is the mean of the different levels of the factor vector. 
 
 
-## Question 2
+## QUESTION 2
 ```{r}
 data("penguins", package = "palmerpenguins")
 ```
 a) The important variables are `r names(penguins)`. 
-b) There is `r nrow(penguins)` rows. There is `r ncol(penguins)` columns. 
+b) There is `r nrow(penguins)` rows in this dataset. There is `r ncol(penguins)` columns in this dataset. 
 c) The mean of the flipper length is `r round(mean(penguins$flipper_length_mm, na.rm=TRUE))`.
 
 ```{r Creating scatterplot}
