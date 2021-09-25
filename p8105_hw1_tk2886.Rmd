@@ -13,49 +13,39 @@ library(tidyverse)
 ## QUESTION 1 
 ```{r Creating a dataframe}
 set.seed(12345)
-mydataframe = tibble(
-  random_sample = rnorm(10),
-  logical_vec = c(random_sample > 0),
-  char_vec = c("My", "name", "is", "Tanvir", "Khan", "and", "I", "like", "the", "Lakers"),
-  fac_vec = factor(c("single", "single", "single", "single", "married", "married", "married", "divorced", "divorced", "divorced")),
+
+mydataframe <- tibble(
+                  random_sample = rnorm(10),
+                  logical_vec = c(random_sample > 0),
+                  char_vec = c("My", "name", "is", "Tanvir", "Khan", "and", "I", "like","the", "Lakers"),
+                  fac_vec = factor(c("single", "single", "single", "single", "married", "married", "married", "divorced", "divorced", "divorced")),
 )
 
 knitr::kable(mydataframe)
 ```
 
 
-```{r Mean of random sample}
+```{r Mean Analysis, collapse = TRUE}
 rnorm_mean = mean(pull(mydataframe, random_sample))
-```
-When I take the mean of the random sample of size 10 from a standard Normal distribution, the mean function works on this and it gives me a value. 
-
-
-```{r Mean of Logical vector}
 logicalvec_mean = mean(pull(mydataframe, logical_vec))
-```
-When I take the mean of the logical vector, the mean works even though that does not make sense. If someone looks at the dataframe they will see that the logical vector in my dataframe displays True and False. The True is being converted to 1 and False is being converted to 0. I have four True out of 10 and that is 0.4 which is the same value as the mean function is outputting. 
-
-
-```{r Mean of Character vector}
 charvec_mean = mean(pull(mydataframe, char_vec))
-```
-When I take the mean of the character vector, the console output is displaying a warning message that states the argument is not numeric or logical: "Returning NA". This makes sense since I can not take the mean of a character vector. 
-
-
-```{r Mean of Factor vector}
 facvec_mean = mean(pull(mydataframe, fac_vec))
 ```
-When I take the mean of the factor vector, I get a warning messae indicating that the argument is not numeric or logical: "Returning NA". The factor vector is not numeric. 
+When I take the mean of the random sample of size 10 from a standard Normal distribution, the mean function works on this and it gives me a value. This works because it contains numeric value. 
+
+When I take the mean of the logical vector, the mean functions work on this logical vector even though that does not make sense. If someone looks at the dataframe they will see that the logical vector in my dataframe displays True and False. The True is being converted to 1 and False is being converted to 0. I have four True out of 10 and that is 0.4 which is the same value as the mean function is outputting. 
+
+When I take the mean of the character vector and factor vector, the console output is displaying a warning message that states the argument is not numeric or logical: "Returning NA". This makes sense for the character vector since I can not take the mean of a character vector which does not have numeric values. The factor vector is not numeric. 
 
 
-```{r Attempting to convert character, logical, factor vector into numeric}
+```{r convertt to numeric}
 numeric_char = as.numeric(factor(pull(mydataframe,char_vec)))
 numeric_logv = as.numeric(pull(mydataframe, logical_vec))
 numeric_fac = as.numeric(pull(mydataframe, fac_vec))
 ```
 
 
-```{r Calculating the mean of the new conversion numbers}
+```{r calculating the mean of the new conversion numbers}
 mean_numchar = mean(numeric_char)
 mean_numlogic = mean(numeric_logv)
 mean_numfactor = mean(numeric_fac)
