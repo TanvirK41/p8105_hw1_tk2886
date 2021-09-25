@@ -10,12 +10,12 @@ output: github_document
 library(tidyverse)
 ```
 
-#### QUESTION 1 
-```{r}
+## QUESTION 1 
+```{r Creating a dataframe}
 set.seed(12345)
 mydataframe = tibble(
   random_sample = rnorm(10),
-  logical_vec = random_sample > 0,
+  logical_vec = c(random_sample > 0),
   char_vec = c("My", "name", "is", "Tanvir", "Khan", "and", "I", "like", "the", "Lakers"),
   fac_vec = factor(c("single", "single", "single", "single", "married", "married", "married", "divorced", "divorced", "divorced")),
 )
@@ -23,12 +23,31 @@ mydataframe = tibble(
 knitr::kable(mydataframe)
 ```
 
-```{r Mean of each vector}
-ransample_mean = mean(pull(mydataframe, random_sample))
-logicalvec_mean = mean(pull(mydataframe, logical_vec))
-charvec_mean = mean(pull(mydataframe, char_vec))
-facvec_mean = mean(pull(mydataframe, fac_vec))
+
+```{r Mean of random sample}
+rnorm_mean = mean(pull(mydataframe, random_sample))
 ```
+When I take the mean of the random sample of size 10 from a standard Normal distribution, the mean function works on this and it gives me a value. 
+
+
+```{r Mean of Logical vector}
+logicalvec_mean = mean(pull(mydataframe, logical_vec))
+```
+When I take the mean of the logical vector, the mean works even though that does not make sense. If someone looks at the dataframe they will see that the logical vector in my dataframe displays True and False. The True is being converted to 1 and False is being converted to 0. I have four True out of 10 and that is 0.4 which is the same value as the mean function is outputting. 
+
+
+```{r Mean of Character vector}
+charvec_mean = mean(pull(mydataframe, char_vec))
+charvec_mean
+```
+When I take the mean of the character vector, the console output is displaying a warning message that states the argument is not numeric or logical: "Returning NA". This makes sense since I can not take the mean of a character vector. 
+
+
+```{r Mean of Factor vector}
+facvec_mean = mean(pull(mydataframe, fac_vec))
+facvec_mean
+```
+When I take the mean of the factor vector, I get a warning messae indicating that the argument is not numeric or logical: "Returning NA". The factor vector is not numeric. 
 
 
 ```{r Attempting to convert character, logical, factor vector into numeric}
@@ -46,20 +65,13 @@ mean_numfactor = mean(numeric_fac)
 
 
 
-
-
-#### Question 2
+## Question 2
 ```{r}
 data("penguins", package = "palmerpenguins")
-
-skimr::skim(penguins)
-names(penguins)
-
-## The important variables are bill_length_mm, bill_depth_mm, flipper_length_mm, and body_mass_g. Also, sex, year, species, and island are important variables. 
-## There is 344 rows and 8 columns 
-## The mean of the flipper length is 201.
-
 ```
+a) The important variables are `r names(penguins)`. 
+b) There is `r nrow(penguins)` rows. There is `r ncol(penguins)` columns. 
+c) The mean of the flipper length is `r round(mean(penguins$flipper_length_mm, na.rm=TRUE))`.
 
 ```{r Creating scatterplot}
 ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species)) +
