@@ -33,16 +33,17 @@ facvec_mean = mean(pull(mydataframe, fac_vec))
 ```
 When I take the mean of the random sample of size 10 from a standard Normal distribution, the mean function works on this and it gives me a value. This works because it contains numeric value. 
 
-When I take the mean of the logical vector, the mean functions work on this logical vector even though that does not make sense. If someone looks at the dataframe they will see that the logical vector in my dataframe displays True and False. The True is being converted to 1 and False is being converted to 0. I have four True out of 10 and that is 0.4 which is the same value as the mean function is outputting. 
+When I take the mean of the logical vector, the mean functions work on this logical vector even though that does not make sense. If someone looks at the data frame they will see that the logical vector in my dataframe displays True and False. The True is being converted to 1 and False is being converted to 0. I have four True out of 10 and that is 0.4 which is the same value as the mean function is outputting. 
 
 When I take the mean of the character vector and factor vector, the console output is displaying a warning message that states the argument is not numeric or logical: "Returning NA". This makes sense for the character vector since I can not take the mean of a character vector which does not have numeric values. The factor vector is not numeric. 
 
 
-```{r convertt to numeric}
-numeric_char = as.numeric(factor(pull(mydataframe,char_vec)))
+```{r convertt to numeric, collapse = TRUE}
+numeric_char = as.numeric(pull(mydataframe,char_vec))
 numeric_logv = as.numeric(pull(mydataframe, logical_vec))
 numeric_fac = as.numeric(pull(mydataframe, fac_vec))
 ```
+When I attempted to convert the character variables in the character vector, NA is returned.  When I convert the logical variables from the logical vector to numeric, it displays 0 and 1. O's indicate True and 1's indicate False. When I convert factor variables in the factor vector to numeric, 3,2,1 are displayed. I believe that the 3,2,1 are numeric codes for the three different levels of the factor. 
 
 
 ```{r calculating the mean of the new conversion numbers}
