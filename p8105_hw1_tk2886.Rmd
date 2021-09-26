@@ -38,7 +38,7 @@ When I take the mean of the logical vector, the mean functions work on this logi
 When I take the mean of the character vector and factor vector, the console output is displaying a warning message that states the argument is not numeric or logical: "Returning NA". This makes sense for the character vector since I can not take the mean of a character vector which does not have numeric values. The factor vector is not numeric or logical. 
 
 
-```{r convert to numeric, message = FALSE, warning = FALSE}
+```{r 1st attempt to convert to numeric, message = FALSE, warning = FALSE}
 numeric_char = as.numeric(pull(mydataframe,char_vec))
 numeric_logv = as.numeric(pull(mydataframe, logical_vec))
 numeric_fac = as.numeric(pull(mydataframe, fac_vec))
@@ -58,15 +58,10 @@ numeric_factorvec = as.numeric(as.character(pull(mydataframe, fac_vec)))
 After doing some research on Google, I found out that since my factor vector has character text like "single", "married", "divorce", I will not be able to convert to numeric even if I use the as.character() function. If the factor vector contained elements that are numbers like c(123,243,3232,412,51) then I may convert that to character by using as.character(). This will represent those exact numbers in text format and then I may do one additional conversion to numeric by using the as.numeric(). This will give me the exact values that was stored in the factor vector. 
 
 
-```{r 2nd attempt at converting character vector to numeric}
-
-```
-
 
 ## QUESTION 2
 ```{r}
 data("penguins", package = "palmerpenguins")
-skimr::skim(penguins)
 ```
 a) The important variables are *`r names(penguins)`*.
 
