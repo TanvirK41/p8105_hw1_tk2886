@@ -33,32 +33,34 @@ facvec_mean = mean(pull(mydataframe, fac_vec))
 ```
 When I take the mean of the random sample of size 10 variable from a standard Normal distribution, the mean function works on this and it gives me a value. This works because it contains numeric value. I can take the mean of a numeric value. 
 
-When I take the mean of the logical vector, the mean functions work on this logical vector even though that does not make sense. If someone looks at the data frame they will see that the logical vector in my dataframe displays True and False. The True is being converted to 1 and False is being converted to 0. I have four True out of 10 and that is 0.4 which is the same value as the mean function is outputting. 
+When I take the mean of the logical vector, the mean functions work on this logical vector even though that does not make sense. If someone looks at the data frame they will see that the logical vector in my data frame displays True and False. The True is being converted to 1 and False is being converted to 0. I have four True out of 10 and that is 0.4 which is the same value as the mean function is outputting. 
 
 When I take the mean of the character vector and factor vector, the console output is displaying a warning message that states the argument is not numeric or logical: "Returning NA". This makes sense for the character vector since I can not take the mean of a character vector which does not have numeric values. The factor vector is not numeric or logical. 
 
 
-```{r convert to numeric, collapse = TRUE}
+```{r convert to numeric, message = FALSE, warning = FALSE}
 numeric_char = as.numeric(pull(mydataframe,char_vec))
 numeric_logv = as.numeric(pull(mydataframe, logical_vec))
 numeric_fac = as.numeric(pull(mydataframe, fac_vec))
 ```
-When I attempted to convert the character variables in the character vector, NA is returned. If I understand correctly, the values in the character value are characters/letters and we can't convert words or letters to numbers. When I convert the logical variables from the logical vector to numeric, it displays 0 and 1. 0's indicate True and 1's indicate False. When I convert factor variables in the factor vector to numeric, 3,2,1 are displayed. I believe that the 3,2,1 are numeric codes for the three different levels of the factor. 
+When I attempted to convert the elements in the character vector, NA is returned. The elements in the character vector are characters/letters and we can't convert words or letters to numbers. When I convert the elements from the logical vector to numeric, it displays 0 and 1. 0's indicate True and 1's indicate False. When I convert elements of the factor vector to numeric, 3,2,1 are displayed. I believe that the 3,2,1 are numeric codes for the three different levels of the factor. 
 
-
-```{r reattempting to convert character to numeric}
-numeric_character = as.numeric(factor(pull(mydataframe, char_vec)))
-```
-
-
-
-
-```{r calculating the mean of the new conversion numbers}
+```{r calculating the mean of the new conversion numbers, message = FALSE, warning = FALSE}
 mean_numchar = mean(numeric_char)
 mean_numlogic = mean(numeric_logv)
 mean_numfactor = mean(numeric_fac)
 ```
-When I take the mean of the converted character vector, it gives me NA because I did not successfully convert character vector to numeric variables. When I take the mean of the numeric converted logical vector, I get the mean of 0.4 because R is handling True's as 0 and False as 1. When I take the mean of the numeric converted factor vector, I get the mean of 2.1 which is the mean of the different levels of the factor vector. 
+When I take the mean of the converted character vector, it gives me NA because I did not successfully convert character vector elements to numeric elements. When I take the mean of the numeric converted logical vector, I get the mean of 0.4 because R is handling True's as 0 and False as 1. When I take the mean of the numeric converted factor vector, I get the mean of 2.1 which is the mean of the different levels of the factor vector. 
+
+```{r 2nd attempt at converting factor vector to numeric, message = FALSE, warning = FALSE}
+numeric_factorvec = as.numeric(as.character(pull(mydataframe, fac_vec)))
+```
+After doing some research on Google, I found out that since my factor vector has character text like "single", "married", "divorce", I will not be able to convert to numeric even if I use the as.character() function. If the factor vector contained elements that are numbers like c(123,243,3232,412,51) then I may convert that to character by using as.character(). This will represent those exact numbers in text format and then I may do one additional conversion to numeric by using the as.numeric(). This will give me the exact values that was stored in the factor vector. 
+
+
+```{r 2nd attempt at converting character vector to numeric}
+
+```
 
 
 ## QUESTION 2
@@ -74,7 +76,7 @@ c) The unique **island** in the penguins data table are *`r unique(penguins$isla
 
 d) The unique **years** in the penguins data table are *`r unique(penguins$year, na.rm = TRUE)`*.
 
-e) The **sex** in the penguins data table are *`r unique(na.omit(penguins$sex))`*.
+##e) The **sex** in the penguins data table are *`r unique(na.omit(penguins$sex))`*.##
 
 f) The mean of the **bill length** is *`r round(mean(penguins$bill_length_mm, na.rm = TRUE), digits = 2)`* and the standard deviation of the bill length is *`r round(sd(penguins$bill_length_mm, na.rm = TRUE), digits = 2)`*.
 
