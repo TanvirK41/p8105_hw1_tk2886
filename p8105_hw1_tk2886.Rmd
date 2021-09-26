@@ -6,12 +6,13 @@ output: github_document
 ---
 
 
-```{r setup, include=FALSE}
+```{r setup, include = FALSE}
 library(tidyverse)
 ```
 
-## QUESTION 1
+# QUESTION 1
 ```{r Creating a dataframe}
+
 set.seed(12345)
 
 mydataframe <- tibble(
@@ -59,33 +60,34 @@ After doing some research on Google, I found out that since my factor vector has
 
 
 
-## QUESTION 2
+# QUESTION 2
 ```{r}
 data("penguins", package = "palmerpenguins")
 ```
 a) The important variables are *`r names(penguins)`*.
 
-b) The unique **species** in the penguins data table are *`r unique(penguins$species)`*.
+b) The unique **species** in the penguins data table are *`r unique(pull(penguins, species))`*.
 
-c) The unique **island** in the penguins data table are *`r unique(penguins$island)`*.
+c) The unique **island** in the penguins data table are *`r unique(pull(penguins, island))`*.
 
-d) The unique **years** in the penguins data table are *`r unique(penguins$year, na.rm = TRUE)`*.
+d) The unique **years** in the penguins data table are *`r unique(pull(penguins, year), na.rm = TRUE)`*.
 
-##e) The **sex** in the penguins data table are *`r unique(na.omit(penguins$sex))`*.##
+##e) The **sex** in the penguins data table are *`r unique(na.omit(pull(penguins, sex)))`*.##
 
-f) The mean of the **bill length** is *`r round(mean(penguins$bill_length_mm, na.rm = TRUE), digits = 2)`* and the standard deviation of the bill length is *`r round(sd(penguins$bill_length_mm, na.rm = TRUE), digits = 2)`*.
+f) The mean of the **bill length** is *`r round(mean(pull(penguins, bill_length_mm), na.rm = TRUE), digits = 2)`* and the standard deviation of the bill length is *`r round(sd(pull(penguins, bill_length_mm), na.rm = TRUE), digits = 2)`*.
 
-g) The mean of the **bill depth** is *`r round(mean(penguins$bill_depth_mm, na.rm = TRUE), digits = 2)`* and the standard deviation of the bill depth is *`r round(sd(penguins$bill_depth_mm, na.rm = TRUE), digits=2)`*.
+g) The mean of the **bill depth** is *`r round(mean(pull(penguins, bill_depth_mm), na.rm = TRUE), digits = 2)`* and the standard deviation of the bill depth is *`r round(sd(pull(penguins, bill_depth_mm), na.rm = TRUE), digits=2)`*.
 
-h) The mean of the **body mass** is *`r round(mean(penguins$body_mass_g, na.rm = TRUE), digits=2)`* and the standard deviation of the body mass is *`r round(sd(penguins$body_mass_g, na.rm = TRUE), digits=2)`*.
+h) The mean of the **body mass** is *`r round(mean(pull(penguins, body_mass_g), na.rm = TRUE), digits=2)`* and the standard deviation of the body mass is *`r round(sd(pull(penguins, body_mass_g), na.rm = TRUE), digits=2)`*.
 
 i) There is *`r nrow(penguins)`* **rows** in this data table. There is *`r ncol(penguins)`* **columns** in this data table. 
 
-j) The mean of the **flipper length** is *`r round(mean(penguins$flipper_length_mm, na.rm = TRUE))`* and the standard deviation of the flipper lenght is *`r round(sd(penguins$flipper_length_mm, na.rm = TRUE))`*. 
+j) The mean of the **flipper length** is *`r round(mean(pull(penguins, flipper_length_mm), na.rm = TRUE))`* and the standard deviation of the flipper length is *`r round(sd(pull(penguins, flipper_length_mm), na.rm = TRUE))`*. 
 
 ```{r Creating scatterplot}
 penguin_scatterplot <- ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species)) +
-  geom_point(size = 2, shape = 23)
+  geom_point(shape = penguins$species, size = 3) +
+  ggtitle("Flipper vs Bill Length") + theme(plot.title = element_text(hjust = 0.5))
 
 penguin_scatterplot
 ```
