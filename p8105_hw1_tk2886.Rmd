@@ -67,15 +67,24 @@ data("penguins", package = "palmerpenguins")
 skimr::skim(penguins)
 ```
 a) The important variables are *`r names(penguins)`*.
+
 b) The unique **species** in the penguins data table are *`r unique(penguins$species)`*.
+
 c) The unique **island** in the penguins data table are *`r unique(penguins$island)`*.
+
 d) The unique **years** in the penguins data table are *`r unique(penguins$year, na.rm = TRUE)`*.
+
 e) The **sex** in the penguins data table are *`r unique(na.omit(penguins$sex))`*.
-e) The mean of the **bill length** is *`r round(mean(penguins$bill_length_mm, na.rm = TRUE), digits = 2)`* and the standard deviation of the bill length is *`r round(sd(penguins$bill_length_mm, na.rm = TRUE), digits = 2)`*.
-f) The mean of the **bill depth** is *`r round(mean(penguins$bill_depth_mm, na.rm = TRUE), digits = 2)`* and the standard deviation of the bill depth is *`r round(sd(penguins$bill_depth_mm, na.rm = TRUE), digits=2)`*.
-g) The mean of the **body mass** is *`r round(mean(penguins$body_mass_g, na.rm = TRUE), digits=2)`* and the standard deviation of the body mass is *`r round(sd(penguins$body_mass_g, na.rm = TRUE), digits=2)`*.
-h) There is *`r nrow(penguins)`* **rows** in this data table. There is *`r ncol(penguins)`* **columns** in this data table. 
-i) The mean of the **flipper length** is *`r round(mean(penguins$flipper_length_mm, na.rm = TRUE))`* and the standard deviation of the flipper lenght is *`r round(sd(penguins$flipper_length_mm, na.rm = TRUE))`*. 
+
+f) The mean of the **bill length** is *`r round(mean(penguins$bill_length_mm, na.rm = TRUE), digits = 2)`* and the standard deviation of the bill length is *`r round(sd(penguins$bill_length_mm, na.rm = TRUE), digits = 2)`*.
+
+g) The mean of the **bill depth** is *`r round(mean(penguins$bill_depth_mm, na.rm = TRUE), digits = 2)`* and the standard deviation of the bill depth is *`r round(sd(penguins$bill_depth_mm, na.rm = TRUE), digits=2)`*.
+
+h) The mean of the **body mass** is *`r round(mean(penguins$body_mass_g, na.rm = TRUE), digits=2)`* and the standard deviation of the body mass is *`r round(sd(penguins$body_mass_g, na.rm = TRUE), digits=2)`*.
+
+i) There is *`r nrow(penguins)`* **rows** in this data table. There is *`r ncol(penguins)`* **columns** in this data table. 
+
+j) The mean of the **flipper length** is *`r round(mean(penguins$flipper_length_mm, na.rm = TRUE))`* and the standard deviation of the flipper lenght is *`r round(sd(penguins$flipper_length_mm, na.rm = TRUE))`*. 
 
 ```{r Creating scatterplot}
 penguin_scatterplot <- ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species)) +
