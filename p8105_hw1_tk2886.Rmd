@@ -67,13 +67,14 @@ data("penguins", package = "palmerpenguins")
 skimr::skim(penguins)
 ```
 a) The important variables are `r names(penguins)`.
-b) The unique species in the penguins data table are `r unique(penguins$species)`.
-c) The unique island in the penguins data table are `r unique(penguins$island)`.
-d) The unique years in the penguins data table are `r unique(penguins$year)`.
-e) The mean of the bill length is `r mean(penguins$bill_length_mm, na.rm = TRUE)` and the standard deviation of the bill length is `r sd(penguins$bill_length_mm, na.rm = TRUE )`.
-f) The mean of the bill depth is `r mean(penguins$bill_depth_mm, na.rm = TRUE)` and the standard deviation of the bill depth is `r sd(penguins$bill_depth_mm, na.rm = TRUE )`.
-g) There is `r nrow(penguins)` rows in this data table. There is `r ncol(penguins)` columns in this data table. 
-h) The mean of the flipper length is `r round(mean(penguins$flipper_length_mm, na.rm=TRUE))`.
+b) The unique **species** in the penguins data table are `r unique(penguins$species)`.
+c) The unique **island** in the penguins data table are `r unique(penguins$island)`.
+d) The unique **years** in the penguins data table are `r unique(penguins$year)`.
+e) The mean of the **bill length** is `r mean(penguins$bill_length_mm, na.rm = TRUE)` and the standard deviation of the bill length is `r sd(penguins$bill_length_mm, na.rm = TRUE )`.
+f) The mean of the **bill depth** is `r mean(penguins$bill_depth_mm, na.rm = TRUE)` and the standard deviation of the bill depth is `r sd(penguins$bill_depth_mm, na.rm = TRUE )`.
+g) The mean of the **body mass** is `r mean(penguins$body_mass_g, na.rm = TRUE)` and the standard deviation of the body mass is `r sd(penguins$body_mass_g, na.rm = TRUE )`.
+h) There is `r nrow(penguins)` **rows** in this data table. There is `r ncol(penguins)` **columns** in this data table. 
+i) The mean of the **flipper length** is `r round(mean(penguins$flipper_length_mm, na.rm=TRUE))`.
 
 ```{r Creating scatterplot}
 penguin_scatterplot <- ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species)) +
