@@ -65,20 +65,20 @@ After doing some research on google, I found out that since my factor vector has
 ```{r}
 data("penguins", package = "palmerpenguins")
 
-
-myspecies = distinct(penguins, species, na.rm = TRUE)
+#unique_species = distinct(penguins, species, na.rm = TRUE)
+#unique_island = distinct(penguins, island, na.rm = TRUE)
 #pengsex <- penguins %>% select(sex) %>% filter(!is.na(sex))
 
 ```
 a) The important variables are *`r names(penguins)`*.
 
-b) The unique **species** in the penguins data table are *`r pull(myspecies, species)`*.
+b) The unique **species** in the penguins data table are *`r unique(pull(penguins, species))`*.
 
 c) The unique **island** in the penguins data table are *`r unique(pull(penguins, island))`*.
 
 d) The unique **years** in the penguins data table are *`r unique(pull(penguins, year), na.rm = TRUE)`*.
 
-e) The sex in the penguins data table are `r unique(na.omit(pull(penguins, sex))) `.
+e) The **sex** in the penguins data table are **`r unique(na.omit(pull(penguins, sex)))`**.
 
 f) The mean of the **bill length** is *`r round(mean(pull(penguins, bill_length_mm), na.rm = TRUE), digits = 2)`* and the standard deviation of the bill length is *`r round(sd(pull(penguins, bill_length_mm), na.rm = TRUE), digits = 2)`*.
 
