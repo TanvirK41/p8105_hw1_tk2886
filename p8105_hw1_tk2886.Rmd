@@ -64,10 +64,10 @@ After doing some research on google, I found out that since my factor vector has
 # QUESTION 2
 ```{r}
 data("penguins", package = "palmerpenguins")
-myspecies = distinct(penguins, species, na.rm = TRUE)
-#mysex = distinct(penguins, sex, na.rm = TRUE)
 
-pengsex <- penguins %>% select(sex) %>% filter(!is.na(sex))
+
+myspecies = distinct(penguins, species, na.rm = TRUE)
+#pengsex <- penguins %>% select(sex) %>% filter(!is.na(sex))
 
 ```
 a) The important variables are *`r names(penguins)`*.
@@ -87,7 +87,7 @@ g) The mean of the **bill depth** is *`r round(mean(pull(penguins, bill_depth_mm
 h) The mean of the **body mass** is *`r round(mean(pull(penguins, body_mass_g), na.rm = TRUE), digits=2)`* and the standard deviation of the body mass is *`r round(sd(pull(penguins, body_mass_g), na.rm = TRUE), digits=2)`*.
 
 
-```{r Creating scatterplot}
+```{r Creating scatterplot, message = FALSE, warning = FALSE}
 penguin_scatterplot <- ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species)) +
   geom_point(shape = penguins$species, size = 3) +
   ggtitle("Flipper vs Bill Length") + theme(plot.title = element_text(hjust = 0.5))
@@ -95,7 +95,7 @@ penguin_scatterplot <- ggplot(penguins, aes(x = bill_length_mm, y = flipper_leng
 penguin_scatterplot
 ```
 
-```{r Saving ggplot as PDF}
+```{r Saving ggplot as PDF, message = FALSE, warning = FALSE}
 ggsave("scatter_plot.pdf", plot = penguin_scatterplot, height = 4, width = 6)
 ```
 
