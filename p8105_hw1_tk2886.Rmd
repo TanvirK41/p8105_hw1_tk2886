@@ -99,7 +99,7 @@ k) The number of **columns** in the penguins data set is **`r ncol(penguins)`**.
 ```{r Creating scatterplot, message = FALSE, warning = FALSE}
 penguin_scatterplot <- ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species)) +
   geom_point(shape = penguins$species, size = 3) +
-  ggtitle("Flipper vs Bill Length") + theme(plot.title = element_text(hjust = 0.5))
+  ggtitle("Flipper Length vs Bill Length") + theme(plot.title = element_text(hjust = 0.5))
 
 penguin_scatterplot
 ```
