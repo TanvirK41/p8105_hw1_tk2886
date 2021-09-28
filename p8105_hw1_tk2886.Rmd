@@ -1,6 +1,6 @@
 ---
 title: "p8105_hw1_tk2886"
-author: "TanvirKhan"
+author: "Tanvir Khan"
 date: 2021-09-24
 output: github_document
 ---
@@ -13,7 +13,7 @@ library(tidyverse)
 # QUESTION 1
 ```{r Creating a dataframe}
 
-set.seed(12345)
+set.seed(1234)
 
 mydataframe <- tibble(
                   random_sample = rnorm(10),
