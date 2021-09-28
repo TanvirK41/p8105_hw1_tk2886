@@ -56,7 +56,7 @@ When I take the mean of the converted character vector, it gives me NA because I
 ```{r 2nd attempt at converting factor vector to numeric, message = FALSE, warning = FALSE}
 numeric_factorvec = as.numeric(as.character(pull(mydataframe, fac_vec)))
 ```
-After doing some research, I found out that since my factor vector has character text like "single", "married", "divorce", I will not be able to convert to numeric even if I use the as.character() function. If the factor vector contained elements that are numbers like c(123,243,3232,412,51) then I may convert that to character by using as.character(). This will represent those exact numbers in text format and then I may do one additional conversion to numeric by using the as.numeric(). This will give me the exact values that was stored in the factor vector. 
+After doing some research on google, I found out that since my factor vector has character text like "single", "married", "divorce", I will not be able to convert to numeric even if I use the as.character() function. If the factor vector contained elements that are numbers like c(123,243,3232,412,51) then I may convert that to character by using as.character(). This will represent those exact numbers in text format and then I may do one additional conversion to numeric by using the as.numeric(). This will give me the exact values that was stored in the factor vector. 
 
 
 
