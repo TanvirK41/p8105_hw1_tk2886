@@ -36,6 +36,11 @@ rnorm_mean = mean(pull(mydataframe, random_sample))
 logicalvec_mean = mean(pull(mydataframe, logical_vec))
 charvec_mean = mean(pull(mydataframe, char_vec))
 facvec_mean = mean(pull(mydataframe, fac_vec))
+
+rnorm_mean
+logicalvec_mean
+charvec_mean
+facvec_mean
 ```
 When I take the mean of the random sample of size 10 variable from a standard Normal distribution, the mean function works on this and it gives me a value. This works because it contains numeric value. I may take the mean of a numeric value. 
 
@@ -78,45 +83,45 @@ After doing some research on Google, I found out that since my factor vector has
 
 
 
+
 # QUESTION 2 - Practicing with inline R code, plotting, and behavior of ggplot
 ```{r}
-mydata = data("penguins", package = "palmerpenguins")
-
+data("penguins", package = "palmerpenguins")
 ```
+
 
 
 ### Practicing with inline R code and extracting specific data from penguins data
 
 a) The important variables are *`r names(penguins)`*.
 
-b) The unique **species** in the penguins data set are **`r unique(pull(penguins, species))`**.
+b) The number of **rows** in the penguins data set is **`r nrow(penguins)`**.
 
-c) The unique **island** in the penguins data set are **`r unique(pull(penguins, island))`**.
+c) The number of **columns** in the penguins data set is **`r ncol(penguins)`**.
 
-d) The unique **years** in the penguins data set are **`r unique(pull(penguins, year), na.rm = TRUE)`**.
+d) The unique **species** in the penguins data set are **`r unique(pull(penguins, species))`**.
 
-e) The **sex** in the penguins data set are **`r unique(na.omit(pull(penguins, sex)))`**.
+e) The unique **island** in the penguins data set are **`r unique(pull(penguins, island))`**.
 
-f) 
+f) The unique **years** in the penguins data set are **`r unique(pull(penguins, year), na.rm = TRUE)`**.
+
+g) The **sex** in the penguins data set are **`r unique(na.omit(pull(penguins, sex)))`**.
+
+h) 
 The mean of the **bill length** is *`r round(mean(pull(penguins, bill_length_mm), na.rm = TRUE), digits = 2)`*mm.
 The standard deviation of the bill length is *`r round(sd(pull(penguins, bill_length_mm), na.rm = TRUE), digits = 2)`*.
 
-g) 
+i) 
 The mean of the **bill depth** is *`r round(mean(pull(penguins, bill_depth_mm), na.rm = TRUE), digits = 2)`*mm.
 The standard deviation of the bill depth is *`r round(sd(pull(penguins, bill_depth_mm), na.rm = TRUE), digits=2)`*.
 
-h) 
+j) 
 The mean of the **flipper length** is *`r round(mean(pull(penguins, flipper_length_mm),na.rm = TRUE))`*mm.
 The standard deviation of the flipper length is  *`r round(sd(pull(penguins, flipper_length_mm), na.rm = TRUE), digits=2)`*.
 
-i)
+k)
 The mean of the **body mass** is *`r round(mean(pull(penguins, body_mass_g), na.rm = TRUE), digits=2)`*mm.
 The standard deviation of the body mass is *`r round(sd(pull(penguins, body_mass_g), na.rm = TRUE), digits=2)`*.
-
-j) The number of **rows** in the penguins data set is **`r nrow(penguins)`**.
-
-k) The number of **columns** in the penguins data set is **`r ncol(penguins)`**.
-
 
 
 
