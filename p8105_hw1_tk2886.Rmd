@@ -13,6 +13,7 @@ library(tidyverse)
 
 
 # QUESTION 1 - Creating a dataframe 
+
 ```{r Creating a dataframe}
 
 set.seed(12345)
@@ -31,6 +32,7 @@ knitr::kable(mydataframe)
 
 
 ## Calculating the mean of each of the variable in my dataframe 
+
 ```{r Mean Analysis, collapse = TRUE}
 rnorm_mean = mean(pull(mydataframe, random_sample))
 logicalvec_mean = mean(pull(mydataframe, logical_vec))
@@ -52,6 +54,7 @@ When I take the mean of the character vector and factor vector, the console outp
 
 
 ## 1st attempt in converting character, logcial, and factor variables into numeric 
+
 ```{r 1st attempt to convert to numeric, message = FALSE, warning = FALSE}
 numeric_char = as.numeric(pull(mydataframe,char_vec))
 numeric_logv = as.numeric(pull(mydataframe, logical_vec))
@@ -64,6 +67,7 @@ When I attempted to convert the elements in the character vector, NA is returned
 
 
 ## Calculating the mean of the newly converted numeric variables 
+
 ```{r calculating the mean of the new conversion numbers, message = FALSE, warning = FALSE}
 mean_numchar = mean(numeric_char)
 mean_numlogic = mean(numeric_logv)
@@ -75,6 +79,7 @@ When I take the mean of the converted character variable, it gives me NA because
 
 
 ## 2nd attempt in converting factor variable to numeric 
+
 ```{r 2nd attempt at converting factor variable to numeric, message = FALSE, warning = FALSE}
 numeric_factorvec = as.numeric(as.character(pull(mydataframe, fac_vec)))
 ```
@@ -85,6 +90,7 @@ After doing some research on Google, I found out that since my factor vector has
 
 
 # QUESTION 2 - Practicing with inline R code, plotting, and behavior of ggplot
+
 ```{r}
 data("penguins", package = "palmerpenguins")
 ```
@@ -126,7 +132,7 @@ The standard deviation of the body mass is *`r round(sd(pull(penguins, body_mass
 
 
 
-### Creating my first scatterplot
+### First time creating scatterplot for this class 
 ```{r Creating scatterplot, message = FALSE, warning = FALSE}
 penguin_scatterplot <- ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species)) +
   geom_point(shape = penguins$species, size = 3) +
@@ -134,6 +140,7 @@ penguin_scatterplot <- ggplot(penguins, aes(x = bill_length_mm, y = flipper_leng
 
 penguin_scatterplot
 ```
+
 
 ### Saving my first ggplot (scatterplot) as PDF
 ```{r Saving ggplot as PDF, message = FALSE, warning = FALSE}
