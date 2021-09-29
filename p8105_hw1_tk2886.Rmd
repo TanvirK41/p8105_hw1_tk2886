@@ -1,6 +1,6 @@
 ---
 title: "p8105_hw1_tk2886"
-author: "Tanvir Khan /"
+author: "Tanvir Khan"
 date: 2021-09-24
 output: github_document
 ---
@@ -10,7 +10,7 @@ output: github_document
 library(tidyverse)
 ```
 
-# QUESTION 1
+# QUESTION 1 - Creating a dataframe 
 ```{r Creating a dataframe}
 
 set.seed(12345)
@@ -60,10 +60,13 @@ After doing some research on google, I found out that since my factor vector has
 
 
 
-# QUESTION 2
+# QUESTION 2 - Practicing with inline R code, plotting, and behavior of ggplot
 ```{r}
 data("penguins", package = "palmerpenguins")
 ```
+
+### Practicing with inline R code and extracting specific data from penguins data
+
 a) The important variables are *`r names(penguins)`*.
 
 b) The unique **species** in the penguins data set are **`r unique(pull(penguins, species))`**.
@@ -95,7 +98,7 @@ j) The number of **rows** in the penguins data set is **`r nrow(penguins)`**.
 k) The number of **columns** in the penguins data set is **`r ncol(penguins)`**.
 
 
-
+### Creating my first scatterplot
 ```{r Creating scatterplot, message = FALSE, warning = FALSE}
 penguin_scatterplot <- ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species)) +
   geom_point(shape = penguins$species, size = 3) +
