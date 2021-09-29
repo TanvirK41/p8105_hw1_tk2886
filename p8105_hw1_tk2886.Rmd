@@ -8,7 +8,6 @@ output: github_document
 
 ```{r setup, include = FALSE}
 library(tidyverse)
-library(dplyr)
 ```
 
 # QUESTION 1
@@ -64,7 +63,6 @@ After doing some research on google, I found out that since my factor vector has
 # QUESTION 2
 ```{r}
 data("penguins", package = "palmerpenguins")
-
 ```
 a) The important variables are *`r names(penguins)`*.
 
